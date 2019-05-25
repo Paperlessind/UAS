@@ -3,14 +3,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
-def setPlotText(data, x, y, val='', halign='right', valign='bottom', color='black',rotate=0,scale=False):
-    for i, v in enumerate(data):
-        if(scale==False):
-            if(v != 0):
-                plt.text(i+(x), v+(y), str(v) + val, horizontalalignment=halign, verticalalignment=valign, color=color, fontweight='bold',rotation=rotate)
-        else:
-            if(v != 0):
-                plt.text(i + (x), v + (y), str(round(v/10000000,2)) + val, horizontalalignment=halign, verticalalignment=valign, color=color,fontweight='bold', rotation=rotate)
+
 def getData(url,second=5):
     # specify the url
 
@@ -38,14 +31,3 @@ def getData(url,second=5):
     browser.quit()
 
     return soup
-
-# Set Text Value
-def autolabel(rects, ax):
-    """
-    Attach a text label above each bar displaying its height
-    """
-    for rect in rects:
-        height = rect.get_height()
-        ax.text(rect.get_x() + rect.get_width()/2., height,
-                '%d' % int(height),
-                ha='center', va='bottom')
